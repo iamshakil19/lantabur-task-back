@@ -10,7 +10,6 @@ import handleCastError from '../errors/handleCastError';
 import handleValidationError from '../errors/handleValidationError';
 import handleZodError from '../errors/handleZodError';
 import { TErrorSources } from '../interfaces/error';
-import { errorLogger } from '../utils/logger';
 import handleDuplicateError from '../errors/handleDuplicateError';
 
 const globalErrorHandler: ErrorRequestHandler = (
@@ -21,7 +20,7 @@ const globalErrorHandler: ErrorRequestHandler = (
 ) => {
   config.env === 'development'
     ? console.log('❌ GlobalErrorHandler ~', { error })
-    : errorLogger.error('❌ GlobalErrorHandler ~', error);
+    : console.log('❌ GlobalErrorHandler ~', error);
 
   let statusCode = 500;
   let message = 'Something went wrong';
