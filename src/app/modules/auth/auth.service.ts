@@ -26,7 +26,7 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
     user.password &&
     !(await User.isPasswordMatched(password, user.password))
   ) {
-    throw new AppError(httpStatus.UNAUTHORIZED, 'Password is incorrect');
+    throw new AppError(httpStatus.FORBIDDEN, 'Password is incorrect');
   }
 
   // create access token & refresh token
